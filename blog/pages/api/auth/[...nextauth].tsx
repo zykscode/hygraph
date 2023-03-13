@@ -1,3 +1,4 @@
+import { CreateNextAuthUserByEmail, GetNextAuthUserByEmail } from "#/services";
 import { graphcms } from "#/services/_graphcms";
 import { compare, hash } from "bcryptjs";
 import NextAuth from "next-auth";
@@ -22,18 +23,10 @@ export default NextAuth({
       authorize: async (credentials: any) => {
         const { email, password } = credentials;
 
-        const { user } = await graphcms.request(GetNextAuthUserByEmail, {
-          email,
-        });
+        const user  = await GetNextAuthUserByEmail(email);
 
         if (!user) {
-          const { newUser } = await graphcms.request(
-            CreateNextAuthUserByEmail,
-            {
-              email,
-              password: await hash(password, 12),
-            },
-          );
+          const newUser  = await CreateNextAuthUserByEmail({email, password})
 
           return {
             id: newUser.id,
@@ -56,7 +49,7 @@ export default NextAuth({
   ],
   pages: {
     signIn: '/auth/signin',  // Displays signin buttons
-  signOut: '/auth/signout', // Displays form with sign out button
+    signOut: '/auth/signout', // Displays form with sign out button
     error: '/auth/error', // Error code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // Used for check email page
     // newUser: null // If set, new users will be directed here on first sign in

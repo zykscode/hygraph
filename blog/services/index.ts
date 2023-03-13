@@ -1,21 +1,29 @@
 import { gql } from "graphql-request";
+import { graphcms } from "./_graphcms";
 
-export const GetNextAuthUserByEmail = gql`
+export const GetNextAuthUserByEmail = async({params}:any)=> {
+  return graphcms.request(`
   query GetAuthorByEmail($email: String!) {
     author(where: { email: $email }) {
       id
       password
     }
   }
-`;
+`,{
+  email:params.email,
+});}
 
-export const CreateNextAuthUserByEmail = gql`
+export const CreateNextAuthUserByEmail = async ({params}:any) => {
+  return graphcms.request(`
   mutation CreateNextAuthAuthourByEmail($email: String!, $password: String!) {
     createAuthor(data: { email: $email, password: $password }) {
       id
     }
   }
-`;
+`,{
+  email:params.email,
+  password:params.password,
+});}
 
 export const indexPageQuery = gql`
   query indexPageQuery($limit: Int!, $offset: Int!) {

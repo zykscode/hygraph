@@ -1,0 +1,33 @@
+datasource mongodb {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+generator mongodb {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  USER
+  AUTHOR
+  ADMIN
+}
+
+model User {
+  id          String  @id @default(cuid())
+  name        String?
+  email       String  @unique
+  password    String
+  bio         String?
+  slug        String  @unique
+  stacks      String?
+  role        UserRole @default(USER)
+  posts       Post[]
+  publishedBy User?   @relation(name: "UserPublished", references: [id])
+  updatedBy   User?   @relation(name: "UserUpdated", references: [id])
+  createdBy   User?   @relation(name: "UserCreated", references: [id])
+  avatar      Asset?
+  versions    Version[]
+
+  @@map("users")
+}
