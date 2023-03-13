@@ -1,9 +1,10 @@
 export type User = {
-    id:string
-    password:string
-    email:string
-    bio?:string
-    stack?:string
-    bio?:string
-    bio?:string
-}
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+    username: string;
+    password: string;
+    created_at: Date;
+    updated_at: Date;
+  };
