@@ -1,5 +1,7 @@
-import NextAuth, { Credentials } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import { graphcms } from "#/services/_graphcms";
+import { compare, hash } from "bcryptjs";
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials"
 
 export default NextAuth({
   providers: [
@@ -17,13 +19,46 @@ export default NextAuth({
           placeholder: "Password"
         },
       },
-      async authorize(credentials: Credentials) {
-        // Add custom logic here to authorize user
-        // For example, compare credentials with database
-        // and return user object if credentials are valid
-        const user = { id: 1, name: "John Doe", email: credentials.email };
-        return user;
-      }
+      authorize: async (credentials: any) => {
+        const { email, password } = credentials;
+
+        const { user } = await graphcms.request(GetNextAuthUserByEmail, {
+          email,
+        });
+
+        if (!user) {
+          const { newUser } = await graphcms.request(
+            CreateNextAuthUserByEmail,
+            {
+              email,
+              password: await hash(password, 12),
+            },
+          );
+
+          return {
+            id: newUser.id,
+            email,
+          };
+        }
+
+        const isValid = await compare(password, user.password);
+
+        if (!isValid) {
+          throw new Error('Wrong credentials. Try again.');
+        }
+
+        return {
+          id: user.id,
+          email,
+        };
+      },
     }),
   ],
+  pages: {
+    signIn: '/auth/signin',  // Displays signin buttons
+  signOut: '/auth/signout', // Displays form with sign out button
+    error: '/auth/error', // Error code passed in query string as ?error=
+    // verifyRequest: '/auth/verify-request', // Used for check email page
+    // newUser: null // If set, new users will be directed here on first sign in
+  },
 });
