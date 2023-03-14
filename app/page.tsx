@@ -1,4 +1,6 @@
+import CoverWrapper from "#/components/CoverWrapper";
 import { indexPageQuery } from "#/services";
+import Me from '#/public/static/images/me.jpg';
 
 
 async function getData() {
@@ -40,9 +42,12 @@ export default async function Home() {
   const data = await getData()
   console.log(data)
   return (
-
-    <main >
-      <h1>Blog</h1>
+<>  
+<CoverWrapper  img={Me}/>
+<main >
+      <h1>Home Blog</h1>
     </main>
+</>
+  
   )
 }

@@ -3,10 +3,10 @@ import prisma from "../../../lib/prisma";
 
 import bcrypt from "bcryptjs";
 import jwt, { Secret } from "jsonwebtoken"; // added Secret type import
-import { env } from "#/lib/jwt";
+import { envVariables } from "#/lib/jwt";
 
 
-const { JWT_KEY, ACCESS_COOKIE_EXPIRY } = env;
+const { JWT_KEY, ACCESS_COOKIE_EXPIRY } = envVariables;
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (_req.method != "POST") {

@@ -1,12 +1,11 @@
-'use client'
-
 import React, { createContext, useState, useEffect } from "react";
-import { useRouter } from "next/router";
+
 import { getToken, removeToken, setToken } from "#/helpers/index";
 import useToast from "#/helpers/notify";
 
 import { loginUserAPI, createUserAPI, getUserDetailsAPI } from "#/lib/apiCalls";
 import { User } from "#/lib/types";
+import { useRouter } from "next/navigation";
 
 
 interface AuthContextProps {
@@ -24,7 +23,7 @@ interface AuthContextProps {
 
 const AuthContext = createContext<AuthContextProps | null>(null);
 
-const AuthState: React.FC<React.PropsWithChildren<{}>> = (props) => {
+const AuthState: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(true);
@@ -120,7 +119,7 @@ const AuthState: React.FC<React.PropsWithChildren<{}>> = (props) => {
         LogoutUser,
       }}
     >
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 };

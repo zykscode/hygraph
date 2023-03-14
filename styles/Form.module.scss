@@ -1,0 +1,24 @@
+.input_group {
+    @apply flex rounded-xl;
+    position: relative;
+}
+
+.input_text {
+    @apply block  placeholder:text-[var(fg-color-1)] w-full bg-[var(--bg-color-1)] inset-0 transition duration-300 ease-in-out rounded-lg border p-2.5 pl-10 text-sm pr-10 text-[var(--fg-color)] 
+}
+
+
+.button {
+    @apply w-full bg-gradient-to-r rounded-xl from-blue-300 to-indigo-500;
+    @apply py-3 text-gray-50 text-lg;
+}
+
+.button:hover {
+    @apply bg-gradient-to-r  border-blue-300;
+    @apply text-gray-700 border;
+}
+
+.button_custom{
+    @apply w-full border-2 border-[var(--fg-color-1)]   py-3 flex text-[var(--fg-color)] rounded-xl justify-center gap-4 hover:bg-[var(--gray)]
+}
+
