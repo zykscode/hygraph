@@ -5,7 +5,7 @@ import logo from '#/public/static/images/me.jpg';
 
 const Logo = () => {
   return (
-    <Image src={logo} alt={'site Logo'} className="h-10 w-10 rounded-full" />
+    <Image priority={true} src={logo} alt={'site Logo'} className="h-10 w-10 rounded-full" />
   );
 };
 

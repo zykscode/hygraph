@@ -3,13 +3,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getToken, removeToken, setToken } from "#/helpers/index";
-import { User } from "../interfaces/index";
 import useToast from "#/helpers/notify";
-import {
-  getUserDetailsAPI,
-  createUserAPI,
-  loginUserAPI,
-} from "../services/call";
+
+import { loginUserAPI, createUserAPI, getUserDetailsAPI } from "#/lib/apiCalls";
+import { User } from "#/lib/types";
+
 
 interface AuthContextProps {
   router: any;
