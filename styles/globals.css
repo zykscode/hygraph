@@ -1,0 +1,499 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * CSS Styles for code highlighting.
+ * Feel free to customize token styles 
+ * by copying from a prismjs compatible theme:
+ * https://github.com/PrismJS/prism-themes
+ */
+
+/* Code title styles */
+.remark-code-title {
+  @apply rounded-t bg-gray-700 px-5 py-3 font-mono text-sm font-bold text-gray-200;
+}
+
+.remark-code-title+div>pre {
+  @apply mt-0 rounded-t-none;
+}
+
+/* Code block styles */
+.code-highlight {
+  @apply float-left min-w-full;
+}
+
+.code-line {
+  @apply -mx-4 block border-l-4 border-transparent pl-4 pr-4;
+}
+
+.code-line.inserted {
+  @apply bg-green-500 bg-opacity-20;
+}
+
+.code-line.deleted {
+  @apply bg-red-500 bg-opacity-20;
+}
+
+.highlight-line {
+  @apply -mx-4 border-l-4 bg-gray-700 bg-opacity-50;
+}
+
+.line-number::before {
+  @apply mr-4 -ml-2 inline-block w-4 text-right text-gray-400;
+  content: attr(line);
+}
+
+/* Token styles */
+/**
+   * MIT License
+   * Copyright (c) 2018 Sarah Drasner
+   * Sarah Drasner's[@sdras] Night Owl
+   * Ported by Sara vieria [@SaraVieira]
+   * Added by Souvik Mandal [@SimpleIndian]
+   */
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: rgb(99, 119, 119);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: rgb(199, 146, 234);
+}
+
+.namespace {
+  color: rgb(178, 204, 214);
+}
+
+.token.deleted {
+  color: rgba(239, 83, 80, 0.56);
+  font-style: italic;
+}
+
+.token.symbol,
+.token.property {
+  color: rgb(128, 203, 196);
+}
+
+.token.tag,
+.token.operator,
+.token.keyword {
+  color: rgb(127, 219, 202);
+}
+
+.token.boolean {
+  color: rgb(255, 88, 116);
+}
+
+.token.number {
+  color: rgb(247, 140, 108);
+}
+
+.token.constant,
+.token.function,
+.token.builtin,
+.token.char {
+  color: rgb(130, 170, 255);
+}
+
+.token.selector,
+.token.doctype {
+  color: rgb(199, 146, 234);
+  font-style: italic;
+}
+
+.token.attr-name,
+.token.inserted {
+  color: rgb(173, 219, 103);
+  font-style: italic;
+}
+
+.token.string,
+.token.url,
+.token.entity,
+.language-css .token.string,
+.style .token.string {
+  color: rgb(173, 219, 103);
+}
+
+.token.class-name,
+.token.atrule,
+.token.attr-value {
+  color: rgb(255, 203, 139);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: rgb(214, 222, 235);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.table {
+  display: inline;
+}
+
+
+
+.flexGroup {
+  @apply mx-auto flex w-3/4 flex-col
+}
+
+.cloud-animation {
+  animation: move-cloud 15s ease-in-out infinite;
+}
+
+.highCloud-animation {
+  animation: move-cloud1 10s linear infinite;
+}
+
+#leaf,
+#leafPart1 {
+  display: none;
+}
+
+
+
+#zero,
+#zeroDot {
+  z-index: 20;
+  animation:
+    bounce alternate infinite cubic-bezier(.2, .65, .6, 1);
+  animation-duration: 2.5s;
+}
+
+
+
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-40px);
+  }
+}
+
+
+@keyframes move-cloud {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-600px, 0px);
+  }
+}
+
+@keyframes move-cloud1 {
+  0% {
+    transform: translate(600px, 0) scale(0.5);
+    opacity: 1;
+   
+  }
+
+  30% {
+    opacity: 0.4;
+    transform: scale(1.2);
+    
+  }
+
+  70% {
+    opacity: 0.9 ;
+    transform: scale(1);
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-9px, 0px);
+    opacity: 0;
+  }
+}
+
+@keyframes land {
+  from {
+    transform: translate(600px, 0);
+  }
+
+  to {
+    transform: translate(-600px, 0px);
+  }
+}
+
+
+.giest_container{
+  @apply flex flex-1 flex-col relative max-w-full min-w-[1px] items-stretch
+}
+
+.geist_container.nowrap {
+  flex-wrap: nowrap !important
+}
+
+.geist_container.inline {
+  display: inline-flex
+}
+.hero_gradient-button-wrapper .hero_button-bg {
+  border-radius: var(--geist-radius);
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: -2;
+}
+
+.hero_gradient-button-wrapper .hero_button-bg, .hero_gradient-button-wrapper .hero_button-bg:before {
+  background-image: linear-gradient(165deg,var(--start-color),var(--end-color));
+}
+
+.hero_gradient-button-wrapper .hero_button-bg.hero_bg-1{
+  animation: hero_background-1 8s infinite;
+}
+
+.hero_gradient-button-wrapper .hero_button-bg.hero_bg-1, .hero_gradient-button-wrappe .hero_button-bg.hero_bg-1:before {
+  --start-color: #00dfd8;
+  --end-color: #007cf0;
+}
+
+
+
+.hero_gradient-button-wrapper .hero_button-bg.hero_bg-3 {
+  animation: hero_background-3 8s infinite;
+}
+.hero_gradient-button-wrapper .hero_button-bg.hero_bg-2 {
+  animation: hero_background-2 8s infinite;
+}
+.hero_gradient-button-wrapper .hero_button-bg.hero_bg-2, .hero_gradient-button-wrapper .hero_button-bg.hero_bg-2:before {
+  --start-color: #ff0080;
+  --end-color: #7928ca;
+}
+.hero_gradient-button-wrapper .hero_button-bg, .hero_gradient-button-wrapper .hero_button-bg:before {
+  background-image: linear-gradient(165deg,var(--start-color),var(--end-color));
+}
+
+.hero_gradient-button-wrapper .hero_button-bg.hero_bg-3, .hero_gradient-button-wrapper .hero_button-bg.hero_bg-3:before {
+  --start-color: #ff4d4d;
+  --end-color: #f9cb28;
+}
+
+@keyframes hero_background-1 {
+
+  0%,
+  16.667%,
+  to {
+      opacity: 1
+  }
+
+  33%,
+  83.333% {
+      opacity: 0
+  }
+}
+
+@keyframes hero_background-2{
+
+  0%,
+  16.667%,
+  66.667%,
+  to {
+      opacity: 0
+  }
+
+  33.333%,
+  50% {
+      opacity: 1
+  }
+}
+
+@keyframes hero_background-3 {
+
+  0%,
+  50%,
+  to {
+      opacity: 0
+  }
+
+  66.667%,
+  83.333% {
+      opacity: 1
+  }
+}
+
+@tailwind base;
+
+a.breadcrumb {
+  @apply text-blue-700;
+}
+
+a.breadcrumb:hover {
+  @apply border-b-2 border-blue-700;
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+.content p {
+  @apply my-6;
+}
+
+.content ul {
+  @apply my-6;
+}
+
+
+.animated-gradient-text_background{
+
+    position: relative;
+    display: block;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.animated-gradient-text_background:before {
+  content: attr(data-content);
+  position: absolute;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: -10px;
+  background: var(--fg-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  }
+
+  .animated-gradient-text_background-1:before {
+    animation: animated-gradient-text_fade-background-1 8s infinite;
+}
+
+.animated-gradient-text_foreground-1{
+  animation: animated-gradient-text_fade-foreground-1 8s infinite;
+}
+.animated-gradient-text_foreground-2{
+  animation: animated-gradient-text_fade-foreground-2 8s infinite;
+}
+.animated-gradient-text_foreground-3{
+  animation: animated-gradient-text_fade-foreground-3 8s infinite;
+}
+
+.animated-gradient-text_foreground {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg,var(--start-color),var(--end-color));
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes animated-gradient-text_fade-foreground-1 {
+
+  0%,
+  16.667%,
+  to {
+    opacity: 1
+  }
+
+  33.333%,
+  83.333% {
+    opacity: 0
+  }
+}
+
+@keyframes animated-gradient-text_fade-background-1 {
+
+  0%,
+  16.667%,
+  to {
+    opacity: 0
+  }
+
+  25%,
+  91.667% {
+    opacity: 1
+  }
+}
+
+
+@keyframes animated-gradient-text_fade-foreground-2 {
+
+  0%,
+  to {
+    opacity: 0
+  }
+
+  33.333%,
+  50% {
+    opacity: 1
+  }
+
+  16.667%,
+  66.667% {
+    opacity: 0
+  }
+}
+
+@keyframes animated-gradient-text_fade-background-2 {
+
+  0%,
+  to {
+    opacity: 1
+  }
+
+  33.333%,
+  50% {
+    opacity: 0
+  }
+
+  25%,
+  58.333% {
+    opacity: 1
+  }
+}
+
+@keyframes animated-gradient-text_fade-foreground-3 {
+
+  0%,
+  50%,
+  to {
+    opacity: 0
+  }
+
+  66.667%,
+  83.333% {
+    opacity: 1
+  }
+}
+
+@keyframes animated-gradient-text_fade-background-3 {
+
+  0%,
+  58.333%,
+  91.667%,
+  to {
+    opacity: 1
+  }
+
+  66.667%,
+  83.333% {
+    opacity: 0
+  }
+}
+
+.leaflet-bottom.leaflet-right{
+  display: none;
+}
